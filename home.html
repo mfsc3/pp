@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha seu Destino</title>
+    <style>
+        /* Estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        /* Tela de seleção inicial */
+        #selection-screen {
+            display: flex;
+            flex-direction: column; /* Mantém o título acima dos botões */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            position: relative; 
+            padding: 20px;
+        }
+
+        #selection-screen h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* ✅ NOVO CONTAINER PARA OS BOTÕES */
+        .button-container {
+            display: flex; /* Alinha os botões em linha */
+            gap: 25px; /* Cria um espaço entre os botões */
+            align-items: center; /* Alinha verticalmente caso tenham alturas diferentes */
+        }
+
+        /* Estilo comum para os botões */
+        .choice-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 2px solid white;
+            transition: background 0.3s, color 0.3s;
+            white-space: nowrap; /* Impede que o texto do botão quebre linha */
+        }
+
+        /* Botão estático (o correto) */
+        #redirect-btn {
+            background-color: #007bff; /* Azul */
+            border-color: #007bff;
+            color: white;
+        }
+        #redirect-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Botão que foge (o incorreto) */
+        #evade-btn {
+            background-color: #f44336; /* Vermelho */
+            border-color: #f44336;
+            color: white;
+            /* ✅ A 'position' foi removida daqui e será adicionada pelo JavaScript */
+            transition: top 0.2s ease-out, left 0.2s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="selection-screen">
+        <h1>Vai me dar?</h1>
+        
+        <div class="button-container">
+            <button class="choice-btn" id="redirect-btn">claro q eu vou gostosao</button>
+            <button class="choice-btn" id="evade-btn">Não feioso</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Seleciona os botões
+        const redirectBtn = document.getElementById('redirect-btn');
+        const evadeBtn = document.getElementById('evade-btn');
+
+        // LÓGICA DO BOTÃO CORRETO (REDIRECIONAMENTO)
+        redirectBtn.addEventListener('click', () => {
+            window.location.href = 'https://youtu.be/syNpGJnuzIQ?si=98XMhOv8KDB_3Nty'; 
+        });
+
+        // LÓGICA DO BOTÃO QUE FOGE
+        evadeBtn.addEventListener('mouseover', () => {
+            // ✅ ADICIONADO: Ao passar o mouse, o botão "salta" do layout normal
+            evadeBtn.style.position = 'absolute';
+
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const btnWidth = evadeBtn.offsetWidth;
+            const btnHeight = evadeBtn.offsetHeight;
+            const maxX = screenWidth - btnWidth;
+            const maxY = screenHeight - btnHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            evadeBtn.style.left = randomX + 'px';
+            evadeBtn.style.top = randomY + 'px';
+        });
+    </script>
+
+</body>
+</html>
