@@ -39,7 +39,7 @@
             text-align: center;
         }
 
-        /* ✅ NOVO CONTAINER PARA OS BOTÕES */
+        /* Container para os botões */
         .button-container {
             display: flex; /* Alinha os botões em linha */
             gap: 25px; /* Cria um espaço entre os botões */
@@ -72,7 +72,6 @@
             background-color: #f44336; /* Vermelho */
             border-color: #f44336;
             color: white;
-            /* ✅ A 'position' foi removida daqui e será adicionada pelo JavaScript */
             transition: top 0.2s ease-out, left 0.2s ease-out;
         }
     </style>
@@ -80,11 +79,11 @@
 <body>
 
     <div id="selection-screen">
-        <h1>quero um beijo</h1>
+        <h1>quer um beijo da carpenter?</h1>
         
         <div class="button-container">
-            <button class="choice-btn" id="redirect-btn">te dou, gostosao</button>
-            <button class="choice-btn" id="evade-btn">não, feioso</button>
+            <button class="choice-btn" id="redirect-btn">sim</button>
+            <button class="choice-btn" id="evade-btn">nao</button>
         </div>
 
     </div>
@@ -101,7 +100,6 @@
 
         // LÓGICA DO BOTÃO QUE FOGE
         evadeBtn.addEventListener('mouseover', () => {
-            // ✅ ADICIONADO: Ao passar o mouse, o botão "salta" do layout normal
             evadeBtn.style.position = 'absolute';
 
             const screenWidth = window.innerWidth;
